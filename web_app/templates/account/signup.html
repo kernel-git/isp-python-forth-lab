@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block page-header %}Sign up{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="field" style="width: 100px;" type="submit">Sign up</button>
+</form>
+{% endblock content %}

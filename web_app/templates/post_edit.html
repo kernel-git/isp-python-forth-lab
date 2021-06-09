@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page-header %}Edit post{% endblock %}
+{% block content %}
+    {% if user.is_authenticated and user.pk == post.author.id %}
+        <form class="post-entry" style="border: none; height: 700px; width: 1000px;" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="inputContainer">
+                <i class="fas fa-pen icon"></i>
+                <input class="field" type="submit" value="Update" />
+            </div>
+        </form>
+    {% endif %}
+{% endblock%}
+
+

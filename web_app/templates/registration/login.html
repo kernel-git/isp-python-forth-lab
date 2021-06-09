@@ -1,0 +1,14 @@
+{% extends 'base.html' %} &nbsp;
+
+{% block page-header %}Log in{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+      <p>You are already signed in!</p>
+  {% else %}
+    {{ form.as_p }}
+    <button class="field" style="width: 100px;" type="submit">Log In</button>
+  {% endif %}
+</form>
+{% endblock content %}

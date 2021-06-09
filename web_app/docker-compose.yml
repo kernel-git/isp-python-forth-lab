@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306
+    environment:
+      MYSQL_DATABASE: 'db_django'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    restart: always
+    volumes:
+      - ./db_django:/var/lib/mysql
+  web:
+    image: anatoli2001/blog_app:2.0
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      WAIT_HOSTS: mysql:3306
+    volumes:
+      - .:/web_django
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
