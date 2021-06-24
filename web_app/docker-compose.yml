@@ -14,8 +14,8 @@ services:
     volumes:
       - ./db_django:/var/lib/mysql
   web:
-    image: anatoli2001/blog_app:2.0
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    image: boss078/python-lab-4:latest
+    command: sh -c "python manage.py migrate; python manage.py runserver 0.0.0.0:8000"
     environment:
       WAIT_HOSTS: mysql:3306
     volumes:
